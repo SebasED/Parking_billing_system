@@ -1,10 +1,10 @@
 class Employee:
     """Employee class"""
 
-    def __init__(self, name, last_name, id) -> None:
+    def __init__(self, name, last_name, id):
         self.__name = name
         self.__last_name = last_name
-        self.__id = id
+        self.__ID = id
     
     @property
     def name(self):
@@ -12,9 +12,10 @@ class Employee:
     
     @name.setter
     def name(self, value):
-        if value == "" or type(value) != str:
+        if not value:
             print("Enter a valid value for the name")
-        self.__name = value
+        else:
+            self.__name = value
     
     @property
     def last_name(self):
@@ -22,16 +23,11 @@ class Employee:
     
     @name.setter
     def last_name(self, value):
-        if value == "" or type(value) != str:
+        if not value:
             print("Enter a valid value for the last name")
-        self.__last_name = value
+        else:
+            self.__last_name = value
 
     @property
     def id(self):
-        return self.__id
-    
-    @name.setter
-    def id(self, value):
-        if value == "" or type(value) != int:
-            print("Enter a valid value for the id")
-        self.__last_name = value
+        return self.__ID
