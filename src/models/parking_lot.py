@@ -1,4 +1,5 @@
 from employee import Employee
+from ticket import Ticket
 class ParkingLot:
     
     def __init__(self, nit, name, address, employee_name, employee_last_name, employee_id):
@@ -53,3 +54,8 @@ class ParkingLot:
     @property
     def Reciepts(self):
         return self.__receipts
+    
+    def vehicle_entry(self, license_plate, type_vehicle):
+        ticket = Ticket(self.__tickets.len(), license_plate, type_vehicle)
+        self.__tickecs.append(ticket) 
+        
