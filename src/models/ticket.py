@@ -6,7 +6,7 @@ class Ticket:
     def __init__(self, num_ticket, license_plate, type_vehicle):
         self.__num_ticket = num_ticket
         self.__ingress_date = datetime.datetime.now()
-        self.vehicle = Vehicle(license_plate, type_vehicle)
+        self.__vehicle = Vehicle(license_plate, type_vehicle)
     
     @property
     def num_ticket(self):

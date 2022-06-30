@@ -1,8 +1,9 @@
-from models import Employee
+from models.employee import Employee
 from models.ticket import Ticket
 from models.receipt import Receipt
 from handlers import ticket_handler
 from handlers import receipt_handler
+
 
 class ParkingLot:
     
