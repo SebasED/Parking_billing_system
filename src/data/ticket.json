@@ -1,0 +1,14 @@
+[
+    {
+        "num_ticket": 0,
+        "license_plate": "www3w",
+        "type": "car",
+        "ingress_date": "2022-06-30 15:50:37.085934"
+    },
+    {
+        "num_ticket": 1,
+        "license_plate": "uuu7u",
+        "type": "moto",
+        "ingress_date": "2022-06-30 16:27:52.959514"
+    }
+]

@@ -60,12 +60,11 @@ class ParkingLot:
     def vehicle_entry(self, license_plate, type_vehicle):
         num_ticket = ticket_handler.get_num_ticket()
         ticket = Ticket(num_ticket, license_plate, type_vehicle)
-        print(ticket.vehicle.license_plate)
         ticket_handler.create_ticket(ticket.num_ticket, 
-                                     ticket.vehicle.license_plate, 
+                                     license_plate, 
                                      ticket.vehicle.type_vehicle, 
                                      ticket.ingress_date)
-        ticket_handler.show_ticket(license_plate)
+        # ticket_handler.show_ticket(license_plate)
         
     def vehicle_exit(self, license_plate):
         
