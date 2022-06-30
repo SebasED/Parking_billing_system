@@ -3,7 +3,7 @@ import json
 
 def get_receipt(license_plate):
     with open(".\src\data\ receipt.json") as file:
-        receipts = json.dump(file)
+        receipts = json.load(file)
         receipt = [element for element in receipts if element.license_plate == license_plate]
         if receipt:
             return receipt
@@ -12,13 +12,13 @@ def get_receipt(license_plate):
 
 def get_receipts():
     with open(".\src\data\ receipt.json") as file:
-        receipts = json.dump(file)
+        receipts = json.load(file)
         return receipts
 
 def create_receipt(num_receipt, parking_lot, employee, license_plate, check_in_time, departure_time, total):
     receipts = []
     with open(".\src\data\ receipt.json") as file:
-        receipts = json.dump(file)
+        receipts = json.load(file)
     
     data = {
         "num_receipt": num_receipt,
@@ -37,8 +37,8 @@ def create_receipt(num_receipt, parking_lot, employee, license_plate, check_in_t
 
 def delete_receipt(license_plate):
     receipts = []
-    with open(".\src\data\ receipt.json") as file:
-        receipts = json.dump(file)
+    with open(".\src\data\ receipt.json", "r+") as file:
+        receipts = json.load(file)
         
         receipt = [element for element in receipts if element.license_plate == license_plate]
         if receipt:

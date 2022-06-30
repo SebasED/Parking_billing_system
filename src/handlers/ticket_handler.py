@@ -3,8 +3,8 @@ import json
 
 def get_ticket(license_plate):
     with open(".\src\data\ ticket.json") as file:
-        tickets = json.dump(file)
-        ticket = [element for element in tickets if element.license_plate == license_plate]
+        tickets = json.load(file)
+        ticket = [element for element in tickets if element["license_plate"] == license_plate]
         if ticket:
             return ticket
         else:
@@ -12,19 +12,22 @@ def get_ticket(license_plate):
     
 def get_tickets():
     with open(".\src\data\ ticket.json") as file:
-        tickets = json.dump(file)
+        tickets = json.load(file)
         return tickets
 
 def create_ticket(num_ticket, license_plate, type_vehicle, ingress_date):
     tickets = []
     with open(".\src\data\ ticket.json") as file:
-        tickets = json.dump(file)
+        try:
+            tickets = json.load(file)
+        except json.JSONDecodeError:
+            pass  
     
     data = {
         "num_ticket": num_ticket,
         "license_plate": license_plate,
         "type": type_vehicle,
-        "ingress_date": ingress_date
+        "ingress_date": str(ingress_date)
     }
     
     tickets.append(data)
@@ -36,7 +39,7 @@ def create_ticket(num_ticket, license_plate, type_vehicle, ingress_date):
 def delete_ticket(license_plate):
     tickets = []
     with open(".\src\data\ ticket.json", "r+") as file:
-        tickets = json.dump(file)
+        tickets = json.load(file)
         
         ticket = [element for element in tickets if element.license_plate == license_plate]
         if ticket:
@@ -53,5 +56,9 @@ def show_ticket(license_plate):
     
 def get_num_ticket():
     with open(".\src\data\ ticket.json") as file:
-        tickets = json.dump(file)
-        return len(tickets)
+        try:
+            tickets = json.load(file)
+            return len(tickets) 
+        except json.JSONDecodeError:
+            return 0
+        

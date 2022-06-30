@@ -4,7 +4,7 @@ class Employee:
     def __init__(self, name, last_name, id):
         self.__name = name
         self.__last_name = last_name
-        self.__ID = id
+        self.__id = id
     
     @property
     def name(self):
@@ -30,4 +30,11 @@ class Employee:
 
     @property
     def id(self):
-        return self.__ID
+        return self.__id
+    
+    @id.setter
+    def id(self, value):
+        if not value:
+            print("Enter a valid value for the id")
+        else:
+            self.__id = value
