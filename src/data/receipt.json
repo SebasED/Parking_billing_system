@@ -1,0 +1,19 @@
+[
+    {
+        "num_receipt": 0,
+        "Parking_lot": {
+            "NIT":1111,
+            "name": "",
+            "address": ""
+        },
+        "employee": {
+            "id": 1,
+            "name":"",
+            "last_name":""
+        },
+        "license_plate":"",
+        "check_in_time":"",
+        "departure_time":"",
+        "total":1
+    }
+]

@@ -21,7 +21,7 @@ class Employee:
     def last_name(self):
         return self.__last_name
     
-    @name.setter
+    @last_name.setter
     def last_name(self, value):
         if not value:
             print("Enter a valid value for the last name")

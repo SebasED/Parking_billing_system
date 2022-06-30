@@ -1,14 +1,16 @@
 from employee import Employee
 from ticket import Ticket
+from handlers import ticket_handler
+from handlers import receipt_handler
+import datetime
+
 class ParkingLot:
     
     def __init__(self, nit, name, address, employee_name, employee_last_name, employee_id):
         self.__NIT = nit
         self.__name = name
         self.__address = address
-        self.__employees = [Employee(employee_name, employee_last_name, employee_id)]
-        self.__tickets = []
-        self.__receipts = []
+        self.__employee = Employee(employee_name, employee_last_name, employee_id)
     
     @property
     def nit(self):
@@ -56,6 +58,23 @@ class ParkingLot:
         return self.__receipts
     
     def vehicle_entry(self, license_plate, type_vehicle):
-        ticket = Ticket(self.__tickets.len(), license_plate, type_vehicle)
-        self.__tickecs.append(ticket) 
+        num_ticket = ticket_handler.get_num_ticket()
+        ticket = Ticket(num_ticket, license_plate, type_vehicle)
+        ticket_handler.create_ticket(ticket.num_ticket, ticket.license_plate, ticket.type_vehicle, ticket.ingress_date)
+        ticket_handler.show_ticket()
+        
+        
+    def vehicle_exit(self, license_plate):
+        ticket = ticket_handler.get_ticket(license_plate)
+        parking = {
+            "NIT":self.__NIT,
+            "name": self.__name,
+            "address": self.__address
+        }
+        employee = {
+            "id": self.__employee.id,
+            "name":self.__employee.name,
+            "last_name":self.__employee.last_name
+        }
+        departure_date =  datetime.datetime.now()
         
