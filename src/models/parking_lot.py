@@ -1,8 +1,10 @@
+from posixpath import split
 from models.employee import Employee
 from models.ticket import Ticket
 from models.receipt import Receipt
 from handlers import ticket_handler
 from handlers import receipt_handler
+from datetime import datetime
 
 
 class ParkingLot:
@@ -64,18 +66,20 @@ class ParkingLot:
                                      license_plate, 
                                      ticket.vehicle.type_vehicle, 
                                      ticket.ingress_date)
-        # ticket_handler.show_ticket(license_plate)
         
     def vehicle_exit(self, license_plate):
-        
         ticket = ticket_handler.get_ticket(license_plate)
-        receipt = Receipt(ticket.num_ticket, 
-                          self.nit, self.name, 
+        index = ticket["ingress_date"].find(".")
+        date = ticket["ingress_date"].replace("-","/")[0:index]
+        ingress_date = datetime.strptime(date,'%Y/%m/%d %H:%M:%S')
+        receipt = Receipt(ticket["num_ticket"], 
+                          self.nit, 
+                          self.name, 
                           self.address, 
                           self.employee.name, 
                           self.employee.last_name, 
                           self.employee.id, 
-                          ticket.ingress_date)
+                          ingress_date)
         total = receipt.get_total()
         parking = {
             "NIT": receipt.parking_nit,
@@ -94,4 +98,6 @@ class ParkingLot:
                                         receipt.ingress_date, 
                                         receipt.departure_date, 
                                         total)
+        
+        ticket_handler.delete_ticket(license_plate)
         

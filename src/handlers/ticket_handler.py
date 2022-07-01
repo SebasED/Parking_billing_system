@@ -6,14 +6,16 @@ def get_ticket(license_plate):
         tickets = json.load(file)
         ticket = [element for element in tickets if element["license_plate"] == license_plate]
         if ticket:
-            return json.dumps(ticket[0], indent=4)
+            return ticket[0]
         else:
             return "The license plate does not exist"
+    
     
 def get_tickets():
     with open(".\src\data\\ticket.json") as file:
         tickets = json.load(file)
-        return json.dumps(tickets, indent=4)
+        return tickets
+
 
 def create_ticket(num_ticket, license_plate, type_vehicle, ingress_date):
     tickets = []
@@ -35,6 +37,7 @@ def create_ticket(num_ticket, license_plate, type_vehicle, ingress_date):
         json.dump(tickets, file, indent=4)
 
     print(json.dumps(data, indent=4))
+
 
 def delete_ticket(license_plate):
     tickets = []

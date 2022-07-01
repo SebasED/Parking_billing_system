@@ -1,6 +1,7 @@
 from handlers import ticket_handler
 from handlers import receipt_handler
 from models.parking_lot import ParkingLot
+import json
 
 def menu(parking_lot):
     option = ""
@@ -54,14 +55,16 @@ def menu_receipt():
         elif option == "1":
             license_plate = input("Enter the license plate: ")
             receipt = receipt_handler.get_receipt(license_plate)
-            print(receipt)
+            print(json.dumps(receipt, indent=4))
         elif option == "2":
             receipts = receipt_handler.get_receipts()
-            print(receipts)
+            if not receipts:
+                print("There are not receipts for showing.")
+            else:
+                print(json.dumps(receipts, indent=4))
         elif option == "3":
             license_plate = input("Enter the license plate: ")
             receipt_handler.delete_receipt(license_plate)
-            print(f"The receipt of the car with license plate {license_plate} was deleted")
         elif option == "4":
             break        
             
@@ -84,15 +87,17 @@ def menu_ticket():
             print(" select a correct option between 1 and 4")
         elif option == "1":
             license_plate = input("Enter the license plate: ")
-            receipt = ticket_handler.get_ticket(license_plate)
-            print(receipt)
+            ticket = ticket_handler.get_ticket(license_plate)
+            print(json.dumps(ticket, indent=4))
         elif option == "2":
-            receipts = ticket_handler.get_tickets()
-            print(receipts)
+            tickets = ticket_handler.get_tickets()
+            if not tickets:
+                print("There are not tickets for showing")
+            else:
+                print(json.dumps(tickets, indent=4))
         elif option == "3":
             license_plate = input("Enter the license plate: ")
             ticket_handler.delete_ticket(license_plate)
-            print(f"The ticket of the car with license plate {license_plate} was deleted")
         elif option == "4":
             break 
 

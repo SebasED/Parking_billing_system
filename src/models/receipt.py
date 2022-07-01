@@ -60,8 +60,8 @@ class Receipt:
         return self.__departure_date
     
     def get_total(self):
-       ingress_hour = self.ingress_date.hour()
-       exit_hour = self.departure_date()
+       ingress_hour = self.ingress_date.hour
+       exit_hour = self.departure_date.hour
        
        if exit_hour - ingress_hour < 1:
            return self.VALOR 
