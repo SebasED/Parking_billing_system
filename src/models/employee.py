@@ -1,0 +1,40 @@
+class Employee:
+    """Employee class"""
+
+    def __init__(self, name, last_name, id):
+        self.__name = name
+        self.__last_name = last_name
+        self.__id = id
+    
+    @property
+    def name(self):
+        return self.__name
+    
+    @name.setter
+    def name(self, value):
+        if not value:
+            print("Enter a valid value for the name")
+        else:
+            self.__name = value
+    
+    @property
+    def last_name(self):
+        return self.__last_name
+    
+    @last_name.setter
+    def last_name(self, value):
+        if not value:
+            print("Enter a valid value for the last name")
+        else:
+            self.__last_name = value
+
+    @property
+    def id(self):
+        return self.__id
+    
+    @id.setter
+    def id(self, value):
+        if not value:
+            print("Enter a valid value for the id")
+        else:
+            self.__id = value
